@@ -3,7 +3,7 @@ name: Daily Ticket Fetch and Analysis
 on:
   schedule:
     - cron: '30 0 * * *' # 每天台灣時間 08:30 自動跑
-  workflow_dispatch: # 保留這個，讓你可以隨時手動點擊按鈕測試執行
+  workflow_dispatch: # 讓你可以隨時點按鈕測試
 
 jobs:
   run_all_scripts:
@@ -17,9 +17,13 @@ jobs:
       with:
         python-version: '3.10'
 
+    # 設定 Python 搜尋路徑，確保能讀取當前目錄與任何自訂套件資料夾
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$PYTHONPATH:${{ github.workspace }}" >> $GITHUB_ENV
+
     - name: Install dependencies
       run: |
-        pip install selectolax
+        pip install selectolax fast_flights
         pip install -r requirements.txt || echo "No requirements.txt or no need"
 
     - name: Run Fetch Script
