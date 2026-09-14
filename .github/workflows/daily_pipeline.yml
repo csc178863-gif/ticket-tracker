@@ -22,7 +22,7 @@ jobs:
         pip install -r requirements.txt || echo "No requirements.txt or no need"
 
     - name: Run Fetch Script
-      run: sh run_daily.bash
+      run: bash run_daily.sh
 
     - name: Run Analysis Script
       run: python analyse_panel.py
