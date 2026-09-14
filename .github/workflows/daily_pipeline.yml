@@ -1,9 +1,9 @@
-yamlname: Daily Ticket Fetch and Analysis
+name: Daily Ticket Fetch and Analysis
 
 on:
   schedule:
     - cron: '30 0 * * *' # 每天台灣時間 08:30 自動跑
-  workflow_dispatch: # 讓你可以隨時點按鈕測試
+  workflow_dispatch: # 保留這個，讓你可以隨時手動點擊按鈕測試執行
 
 jobs:
   run_all_scripts:
