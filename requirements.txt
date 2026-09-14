@@ -1,0 +1,8 @@
+# Pinned: fast-flights scrapes an undocumented Google Flights payload, so a
+# minor bump can change the parse path. Upgrade deliberately, not implicitly.
+fast-flights==3.1.0
+selectolax==0.4.11
+pandas==2.2.3
+numpy==2.3.5
+statsmodels==0.15.0
+scikit-learn==1.6.1
