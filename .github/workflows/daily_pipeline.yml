@@ -2,7 +2,7 @@ name: Daily Ticket Fetch and Analysis
 
 on:
   schedule:
-    - cron: '30 0 * * *' # 每天台灣時間 08:30 自動跑
+    - cron: '11 18 * * *' # 每天台灣時間 02:11 自動跑
   workflow_dispatch: # 讓你可以隨時點按鈕測試
 
 jobs:
