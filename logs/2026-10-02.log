@@ -1,0 +1,8 @@
+[22:12:10]   ...+30d  quoted=60 noflight=0 failed=0
+[22:13:03]   ...+60d  quoted=120 noflight=0 failed=0
+[22:13:54]   ...+90d  quoted=180 noflight=0 failed=0
+[22:14:46]   ...+120d  quoted=240 noflight=0 failed=0
+[22:15:39]   ...+150d  quoted=281 noflight=19 failed=0
+[22:16:28]   ...+180d  quoted=310 noflight=50 failed=0
+[22:16:28] snapshot 2026-10-02 done in 5.2min: 310 quoted, 50 no-flight, 0 failed (360 rows)
+[22:16:29] snapshot 2026-10-02: no failed rows to retry

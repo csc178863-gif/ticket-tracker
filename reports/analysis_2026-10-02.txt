@@ -1,0 +1,60 @@
+====================================================================
+PANEL READINESS
+====================================================================
+snapshots: 19  (2026-09-14 .. 2026-10-02)
+
+  HKD-TPE: 2599 obs, 150 departure dates
+    quotes per departure date: median 19, max 19
+    dates observed from >=2 snapshots: 148 (99%)
+
+  TPE-AOJ: 2450 obs, 149 departure dates
+    quotes per departure date: median 19, max 19
+    dates observed from >=2 snapshots: 147 (99%)
+
+
+====================================================================
+REPRICING EVENTS (same departure date, price changed)
+====================================================================
+
+  HKD-TPE: 2343 changes, median move -4 TWD
+    increases 893, decreases 1450
+      dep 2026-10-10 @dtd 11   23,786 ->  13,885  (-41.6%)
+      dep 2026-10-19 @dtd 28   13,876 ->  23,747  (+71.1%)
+      dep 2026-10-23 @dtd 30   26,906 ->  18,325  (-31.9%)
+      dep 2026-10-23 @dtd 24   27,018 ->  18,464  (-31.7%)
+      dep 2026-10-23 @dtd 29   18,325 ->  26,771  (+46.1%)
+
+  TPE-AOJ: 1761 changes, median move +4 TWD
+    increases 1132, decreases 629
+      dep 2026-09-24 @dtd  4   22,969 ->  38,915  (+69.4%)
+      dep 2026-09-24 @dtd  5   38,915 ->  22,969  (-41.0%)
+      dep 2026-10-23 @dtd 29   38,902 ->  22,959  (-41.0%)
+      dep 2026-10-23 @dtd 30   22,961 ->  38,902  (+69.4%)
+      dep 2026-10-26 @dtd 39   38,909 ->  24,874  (-36.1%)
+
+====================================================================
+NOTE: 19 snapshot(s) collected. The booking-curve model needs ~20+
+(roughly 3 weeks of daily runs) before its estimates are worth acting on.
+Collect first; the model below will start reporting once data supports it.
+====================================================================
+====================================================================
+BOOKING CURVE (departure-date fixed effects)
+====================================================================
+
+  HKD-TPE: n=2597, 148 dates, R2=0.876
+    (within-date effects; departure-date FE absorbs seasonality)
+      dtd    +0.689% per day  (p=0.000)*
+      d14    +0.062% per day  (p=0.779) 
+      d30    -0.634% per day  (p=0.000)*
+      d60    +0.852% per day  (p=0.000)*
+      d90    -0.374% per day  (p=0.000)*
+    => within 14d of departure, each day earlier is 0.69% cheaper
+
+  TPE-AOJ: n=2448, 147 dates, R2=0.896
+    (within-date effects; departure-date FE absorbs seasonality)
+      dtd    -0.261% per day  (p=0.083) 
+      d14    +1.335% per day  (p=0.000)*
+      d30    -0.438% per day  (p=0.002)*
+      d60    -0.517% per day  (p=0.000)*
+      d90    -0.061% per day  (p=0.545) 
+    => within 14d of departure, each day earlier is 0.26% more expensive
