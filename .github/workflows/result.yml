@@ -25,4 +25,4 @@ jobs:
 
     - name: 執行分析腳本
       run: python analyse_panel.py
-      run: python run_daily.sh
+
