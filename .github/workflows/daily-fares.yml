@@ -1,0 +1,66 @@
+name: daily-fares
+
+on:
+  schedule:
+    - cron: "20 21 * * *"      # 21:20 UTC = 05:20 Taipei next day
+  workflow_dispatch:
+    inputs:
+      horizon:
+        description: "days ahead to scan"
+        default: "180"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-fares
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect snapshot
+        env:
+          HORIZON: ${{ github.event.inputs.horizon || '180' }}
+        run: ./run_daily.sh
+        continue-on-error: true
+
+      - name: Analyse panel
+        if: always()
+        run: |
+          python3 analyse_panel.py --markdown > REPORT.md
+          cat REPORT.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit snapshot
+        if: always()
+        run: |
+          git config user.name  "fare-pipeline"
+          git config user.email "actions@github.com"
+          git add data/quotes.jsonl REPORT.md logs/ || true
+          if git diff --staged --quiet; then
+            echo "no new data to commit"
+          else
+            git commit -m "fares: snapshot $(date -u +%Y-%m-%d)"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            git push
+          fi
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-${{ github.run_number }}
+          path: logs/
+          retention-days: 14
+          if-no-files-found: ignore
