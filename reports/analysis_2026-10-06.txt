@@ -1,55 +1,56 @@
+
 ====================================================================
-PANEL READINESS
+面板就緒度
 ====================================================================
 snapshots: 22  (2026-09-14 .. 2026-10-06)
 
-  HKD-TPE: 3011 obs, 154 departure dates
-    quotes per departure date: median 22, max 22
-    dates observed from >=2 snapshots: 150 (97%)
-
-  TPE-AOJ: 2838 obs, 151 departure dates
-    quotes per departure date: median 22, max 22
-    dates observed from >=2 snapshots: 149 (99%)
+    JX861 函館→台北 (星宇)  3011  154  22  22  150 (97%)
+    BR122 台北→青森 (長榮)  2838  151  22  22  149 (99%)
+snapshots >= 20: estimates now usable.
 
 
 ====================================================================
-REPRICING EVENTS (same departure date, price changed)
+調價事件
 ====================================================================
 
-  HKD-TPE: 2619 changes, median move -4 TWD
-    increases 1040, decreases 1579
-      dep 2026-10-10 @dtd 11   23,786 ->  13,885  (-41.6%)
-      dep 2026-10-19 @dtd 28   13,876 ->  23,747  (+71.1%)
-      dep 2026-10-23 @dtd 30   26,906 ->  18,325  (-31.9%)
-      dep 2026-10-23 @dtd 24   27,018 ->  18,464  (-31.7%)
-      dep 2026-10-23 @dtd 29   18,325 ->  26,771  (+46.1%)
+  HKD-TPE: 2619 changes, median -4 TWD, up 1040 down 1579
 
-  TPE-AOJ: 1908 changes, median move +3 TWD
-    increases 1146, decreases 762
-      dep 2026-09-24 @dtd  4   22,969 ->  38,915  (+69.4%)
-      dep 2026-09-24 @dtd  5   38,915 ->  22,969  (-41.0%)
-      dep 2026-10-23 @dtd 29   38,902 ->  22,959  (-41.0%)
-      dep 2026-10-23 @dtd 30   22,961 ->  38,902  (+69.4%)
-      dep 2026-10-26 @dtd 39   38,909 ->  24,874  (-36.1%)
+    2026-10-10  11d  23,786  13,885  -41.6%
+    2026-10-19  28d  13,876  23,747  +71.1%
+    2026-10-23  30d  26,906  18,325  -31.9%
+    2026-10-23  24d  27,018  18,464  -31.7%
+    2026-10-23  29d  18,325  26,771  +46.1%
+
+  TPE-AOJ: 1908 changes, median +3 TWD, up 1146 down 762
+
+    2026-09-24  4d  22,969  38,915  +69.4%
+    2026-09-24  5d  38,915  22,969  -41.0%
+    2026-10-23  29d  38,902  22,959  -41.0%
+    2026-10-23  30d  22,961  38,902  +69.4%
+    2026-10-26  39d  38,909  24,874  -36.1%
 
 ====================================================================
-BOOKING CURVE (departure-date fixed effects)
+訂票曲線（出發日固定效果）
 ====================================================================
+(departure-date FE absorbs seasonality; within-date effects below)
 
-  HKD-TPE: n=3007, 150 dates, R2=0.863
-    (within-date effects; departure-date FE absorbs seasonality)
-      dtd    +0.581% per day  (p=0.000)*
-      d14    +0.327% per day  (p=0.100) 
-      d30    -0.832% per day  (p=0.000)*
-      d60    +0.738% per day  (p=0.000)*
-      d90    -0.560% per day  (p=0.000)*
-    => within 14d of departure, each day earlier is 0.58% cheaper
 
-  TPE-AOJ: n=2836, 149 dates, R2=0.885
-    (within-date effects; departure-date FE absorbs seasonality)
-      dtd    -0.343% per day  (p=0.013)*
-      d14    +1.362% per day  (p=0.000)*
-      d30    -0.395% per day  (p=0.001)*
-      d60    -0.567% per day  (p=0.000)*
-      d90    -0.027% per day  (p=0.753) 
-    => within 14d of departure, each day earlier is 0.34% more expensive
+  HKD-TPE: n=3007, R2=0.863
+
+    0–14 天  +0.581% / 天  0.000  **顯著**
+    14–30 天  +0.327% / 天  0.100  不顯著
+    30–60 天  -0.832% / 天  0.000  **顯著**
+    60–90 天  +0.738% / 天  0.000  **顯著**
+    90 天以上  -0.560% / 天  0.000  **顯著**
+→ 近期區段每多等一天便宜 0.58%，與一般訂票曲線相反，建議再觀察。
+
+
+  TPE-AOJ: n=2836, R2=0.885
+
+    0–14 天  -0.343% / 天  0.013  **顯著**
+    14–30 天  +1.362% / 天  0.000  **顯著**
+    30–60 天  -0.395% / 天  0.001  **顯著**
+    60–90 天  -0.567% / 天  0.000  **顯著**
+    90 天以上  -0.027% / 天  0.753  不顯著
+→ 可行動結論：近期區段每多等一天平均貴 **0.34%**，宜提早購票。
+
