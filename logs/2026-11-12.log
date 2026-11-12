@@ -7,3 +7,12 @@
 [00:55:41] snapshot 2026-11-12 done in 17.8min: 278 quoted, 66 no-flight, 16 failed (360 rows)
 [00:55:41] snapshot 2026-11-12: retrying 16 failed rows
 [00:56:07] retry done: 16 recovered, 0 confirmed no-flight, 0 still failing
+[23:34:40] resuming snapshot 2026-11-12: 360 rows already present
+[23:34:40]   ...+30d  quoted=0 noflight=0 failed=0
+[23:34:40]   ...+60d  quoted=0 noflight=0 failed=0
+[23:34:40]   ...+90d  quoted=0 noflight=0 failed=0
+[23:34:40]   ...+120d  quoted=0 noflight=0 failed=0
+[23:34:40]   ...+150d  quoted=0 noflight=0 failed=0
+[23:34:40]   ...+180d  quoted=0 noflight=0 failed=0
+[23:34:40] snapshot 2026-11-12 done in 0.0min: 0 quoted, 0 no-flight, 0 failed (0 rows)
+[23:34:40] snapshot 2026-11-12: no failed rows to retry
